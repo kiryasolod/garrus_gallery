@@ -1,46 +1,16 @@
 <script>
-	import {
-		Button,
-		Alert,
-		Card,
-		Navbar,
-		NavBrand,
-		NavLi,
-		NavUl,
-		NavHamburger,
-		Toast
-	} from 'flowbite-svelte';
-	import { FireOutline } from 'flowbite-svelte-icons';
+	import { Gallery } from 'flowbite-svelte';
+	const images = [
+		{ alt: 'shoes', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg' },
+		{ alt: 'small bag', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg' },
+		{ alt: 'plants', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg' },
+		{ alt: 'watch', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg' },
+		{ alt: 'shoe', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg' }
+	];
 </script>
 
-<Button color="primary">Primary</Button>
-<Alert color="primary">Primary</Alert>
-<Card href="/cards" color="primary">
-	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-red-800">
-		Noteworthy technology acquisitions 2021
-	</h5>
-	<p class="font-normal leading-tight text-gray-700 dark:text-gray-700">
-		Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological
-		order.
-	</p>
-</Card>
-<Navbar let:hidden let:toggle color="primary">
-	<NavBrand href="/">
-		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-red-800"
-			>Flowbite</span
-		>
-	</NavBrand>
-	<NavHamburger on:click={toggle} />
-	<NavUl {hidden}>
-		<NavLi href="/about">About</NavLi>
-		<NavLi href="/services">Services</NavLi>
-		<NavLi href="/pricing">Pricing</NavLi>
-		<NavLi href="/contact">Contact</NavLi>
-	</NavUl>
-</Navbar>
-<Toast color="primary">
-	<svelte:fragment slot="icon">
-		<FireOutline class="h-6 w-6" />
-	</svelte:fragment>
-	Dismissable user notification.
-</Toast>
+<Gallery class="grid-cols-3 gap-4" items={images} let:item>
+	<div class="p-1 ring-4 ring-red-600 dark:ring-red-400">
+		<img src={item.src} alt={item.alt} class="h-auto max-w-full" />
+	</div>
+</Gallery>

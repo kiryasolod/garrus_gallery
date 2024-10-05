@@ -1,0 +1,27 @@
+services:
+  garrus-gallery-server:
+    container_name: garrus-gallery-server
+    build:
+      context: ./server
+    network_mode: host
+    ports:
+      - '3000:3000'
+    # restart: unless-stopped
+
+  # garrus-gallery-frontend:
+  #   build:
+  #     context: ./frontend
+  #   network_mode: host
+  #   container_name: garrus-gallery-frontend
+  #   ports:
+  #     - '80:80'    # HTTP
+  #     - '443:443'  # HTTPS
+  #   environment:
+  #     CERTBOT_EMAIL: kiryasolod@gmail.com
+  #     CERTBOT_DOMAINS: garrusarch.space,www.garrusarch.space
+  #     # Optional: Use Certbot staging environment to avoid rate limits during testing
+  #     # CERTBOT_STAGE: --staging
+  #   volumes:
+  #     - ./letsencrypt/etc:/etc/letsencrypt
+  #     - ./letsencrypt/www:/var/www/letsencrypt
+  #   restart: unless-stopped
